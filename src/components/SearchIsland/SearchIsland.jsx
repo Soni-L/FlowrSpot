@@ -1,6 +1,6 @@
 import React from "react";
 import banner from "./banner.png";
-import searchIcon from './search-icon.svg'
+import searchIcon from "./search-icon.svg";
 
 export default function SearchIsland() {
   return (
@@ -30,7 +30,7 @@ export default function SearchIsland() {
             width: "90%",
             border: "none",
             borderRadius: "3px 0 0 3px",
-            outline: 'none',
+            outline: "none",
             height: "30px",
             backgroundColor: "white",
           }}
@@ -47,7 +47,7 @@ export default function SearchIsland() {
             borderRadius: "0 3px 3px 0",
           }}
         >
-          <img src={searchIcon} style={{height: '15px'}}/>
+          <img src={searchIcon} style={{ height: "15px" }} />
         </button>
       </div>
     </div>
