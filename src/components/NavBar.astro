@@ -1,7 +1,3 @@
----
-let title = "Navbar";
----
-
 <nav class="navbar-container">
   <div style="flex-grow: 1; display: flex; gap: 4px">
     <img src="/logo.svg" />
@@ -30,6 +26,9 @@ let title = "Navbar";
     border-radius: 50px;
   }
   .navbar-container {
+    position: sticky;
+    top: 0;
+    z-index: 1;
     display: flex;
     gap: 2rem;
     padding: 0.5rem 1rem;

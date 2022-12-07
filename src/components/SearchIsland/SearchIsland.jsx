@@ -4,7 +4,7 @@ import searchIcon from "./search-icon.svg";
 
 export default function SearchIsland() {
   return (
-    <div style={{ position: "relative" }}>
+    <div style={{ position: "relative", height: '300px' }}>
       <img
         src={banner}
         style={{
