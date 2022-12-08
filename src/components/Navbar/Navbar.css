@@ -2,7 +2,7 @@ a {
   text-decoration: none;
   color: #949ea0;
 }
-button {
+.signup-button {
   border: none;
   color: white;
   cursor: pointer;
