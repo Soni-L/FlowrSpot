@@ -1,15 +1,15 @@
 const API = "https://flowrspot-api.herokuapp.com/api/v1";
 
-export const signup = async (
+export const signup = async ({
   email,
   password,
   first_name,
   last_name,
-  date_of_birth
-) => {
+  date_of_birth,
+}) => {
   try {
     const response = await fetch(`${API}/users/register`, {
-      method: "POST", 
+      method: "POST",
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
