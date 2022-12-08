@@ -1,0 +1,27 @@
+a {
+  text-decoration: none;
+  color: #949ea0;
+}
+button {
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 8px;
+  min-height: 30px;
+  background: linear-gradient(270deg, #ecbcb3 0%, #eaa79e 100%);
+  box-shadow: 0px 15px 20px rgba(234, 168, 159, 0.2);
+  border-radius: 50px;
+}
+.navbar-container {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  display: flex;
+  gap: 2rem;
+  padding: 0.5rem 1rem;
+  justify-content: space-between;
+  align-items: center;
+  background: #ffffff;
+  margin: 0;
+  box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.05);
+}
