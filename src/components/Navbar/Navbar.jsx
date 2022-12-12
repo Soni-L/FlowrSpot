@@ -1,9 +1,20 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import LoginModal from "../LoginModal/LoginModal";
 import SignupModal from "../SignupModal/Signup";
 import "./Navbar.css";
 
 export default function Navbar() {
   const [signupModal, setSignupModal] = useState(false);
+  const [loginModal, setLoginModal] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(false);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      setLoggedIn(true);
+    }
+  });
+
   return (
     <>
       <nav className="navbar-container">
@@ -19,13 +30,31 @@ export default function Navbar() {
 
         <a href="#">Flowers</a>
         <a href="#">Latest Sightings</a>
-        <a href="#">Favorites</a>
-        <a>Login</a>
-        <button onClick={() => setSignupModal(true)} className="signup-button">
-          New Account
-        </button>
+        {loggedIn && (
+          <>
+            <a href="#">Favorites</a>
+            <a href="#">Profile</a>
+          </>
+        )}
+        {!loggedIn && (
+          <>
+            <a
+              style={{ cursor: "pointer" }}
+              onClick={() => setLoginModal(true)}
+            >
+              Login
+            </a>
+            <button
+              onClick={() => setSignupModal(true)}
+              className="signup-button"
+            >
+              New Account
+            </button>
+          </>
+        )}
       </nav>
       <SignupModal open={signupModal} onClose={() => setSignupModal(false)} />
+      <LoginModal open={loginModal} onClose={() => setLoginModal(false)} />
     </>
   );
 }

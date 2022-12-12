@@ -28,3 +28,26 @@ export const signup = async ({
     return err;
   }
 };
+
+export const login = async ({
+  email,
+  password,
+}) => {
+  try {
+    const response = await fetch(`${API}/users/login`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email,
+        password,
+      }),
+    });
+    return await response.json();
+  } catch (err) {
+    console.log(err);
+    return err;
+  }
+};
