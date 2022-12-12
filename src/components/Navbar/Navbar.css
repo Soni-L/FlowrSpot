@@ -1,6 +1,7 @@
 a {
   text-decoration: none;
   color: #949ea0;
+  cursor: pointer;
 }
 .signup-button {
   border: none;

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import SignupModal from "../SignupModal/Signup";
+import profilePic from "./profile-holder.png";
 import "./Navbar.css";
 
 export default function Navbar() {
@@ -33,17 +34,14 @@ export default function Navbar() {
         {loggedIn && (
           <>
             <a href="#">Favorites</a>
-            <a href="#">Profile</a>
+            <a>
+              <img src={profilePic} style={{ height: "30px" }} />
+            </a>
           </>
         )}
         {!loggedIn && (
           <>
-            <a
-              style={{ cursor: "pointer" }}
-              onClick={() => setLoginModal(true)}
-            >
-              Login
-            </a>
+            <a onClick={() => setLoginModal(true)}>Login</a>
             <button
               onClick={() => setSignupModal(true)}
               className="signup-button"

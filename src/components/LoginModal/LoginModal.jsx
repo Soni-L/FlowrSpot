@@ -21,7 +21,7 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-function SignupForm({ onSubmit }) {
+function LoginForm({ onSubmit }) {
   const getData = (form) => {
     let formData = new FormData(form);
     let dataObject = {};
@@ -38,7 +38,7 @@ function SignupForm({ onSubmit }) {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Create Account</h1>
+      <h1>Sign In</h1>
       <form
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", gap: "10px" }}
@@ -79,7 +79,7 @@ export default function LoginModal({ open, onClose }) {
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div style={MODAL_STYLES}>
         <div>
-          <SignupForm onSubmit={onSubmit} />
+          <LoginForm onSubmit={onSubmit} />
         </div>
       </div>
     </>,
