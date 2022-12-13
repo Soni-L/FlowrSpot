@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import ReactDom from "react-dom";
-import { signup } from "../../api/auth";
+import { login } from "../../../api/auth";
 
 const MODAL_STYLES = {
   position: "fixed",
@@ -21,14 +21,11 @@ const OVERLAY_STYLES = {
   zIndex: 1000,
 };
 
-function SignupForm({ onSubmit }) {
+function LoginForm({ onSubmit }) {
   const getData = (form) => {
     let formData = new FormData(form);
     let dataObject = {};
 
-    dataObject.first_name = formData.get("first_name");
-    dataObject.last_name = formData.get("last_name");
-    dataObject.date_of_birth = formData.get("date_of_birth");
     dataObject.email = formData.get("email");
     dataObject.password = formData.get("password");
     onSubmit(dataObject);
@@ -41,40 +38,33 @@ function SignupForm({ onSubmit }) {
 
   return (
     <div style={{ padding: "20px" }}>
-      <h1>Create Account</h1>
+      <h1>Sign In</h1>
       <form
         onSubmit={handleSubmit}
         style={{ display: "flex", flexDirection: "column", gap: "10px" }}
       >
-        <input type="text" placeholder="First Name" name="first_name" />
-        <input type="text" placeholder="Last Name" name="last_name" />
-        <input type="date" placeholder="Date of Birth" name="date_of_birth" />
         <input type="text" placeholder="email" name="email" />
         <input type="password" name="password" />
-        <input type="submit" value="Create Account" />
+        <input type="submit" value="Log In" />
       </form>
     </div>
   );
 }
 
-export default function SignupModal({ open, onClose }) {
+export default function LoginModal({ open, onClose }) {
   const [documentLoaded, setDocumentLoaded] = useState(false);
 
   const onSubmit = async (data) => {
-    const { email, password, first_name, last_name, date_of_birth } = data;
-    const response = await signup({
+    const { email, password } = data;
+    const response = await login({
       email,
       password,
-      first_name,
-      last_name,
-      date_of_birth,
     });
 
-    if(response.error){
+    if (response.error) {
       alert(response.error);
-    }
-    else{
-      alert("Account created successfully");
+    } else {
+      localStorage.setItem("token", response.auth_token);
       onClose();
     }
   };
@@ -89,7 +79,7 @@ export default function SignupModal({ open, onClose }) {
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div style={MODAL_STYLES}>
         <div>
-          <SignupForm onSubmit={onSubmit} />
+          <LoginForm onSubmit={onSubmit} />
         </div>
       </div>
     </>,

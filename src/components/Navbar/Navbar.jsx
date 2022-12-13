@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
-import LoginModal from "../LoginModal/LoginModal";
-import SignupModal from "../SignupModal/Signup";
+import LoginModal from "../Modals/Login/Login";
+import SignupModal from "../Modals/Signup/Signup";
 import profilePic from "./profile-holder.png";
 import "./Navbar.css";
+import ProfileModal from "../Modals/Profile/Profile";
 
 export default function Navbar() {
   const [signupModal, setSignupModal] = useState(false);
   const [loginModal, setLoginModal] = useState(false);
+  const [profileModal, setProfileModal] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
 
   useEffect(() => {
@@ -34,7 +36,7 @@ export default function Navbar() {
         {loggedIn && (
           <>
             <a href="#">Favorites</a>
-            <a>
+            <a onClick={() => setProfileModal(true)}>
               <img src={profilePic} style={{ height: "30px" }} />
             </a>
           </>
@@ -53,6 +55,10 @@ export default function Navbar() {
       </nav>
       <SignupModal open={signupModal} onClose={() => setSignupModal(false)} />
       <LoginModal open={loginModal} onClose={() => setLoginModal(false)} />
+      <ProfileModal
+        open={profileModal}
+        onClose={() => setProfileModal(false)}
+      />
     </>
   );
 }
