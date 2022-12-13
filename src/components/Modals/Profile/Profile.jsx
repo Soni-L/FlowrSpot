@@ -23,21 +23,64 @@ const OVERLAY_STYLES = {
 
 export default function ProfileModal({ open, onClose }) {
   const [documentLoaded, setDocumentLoaded] = useState(false);
+  const [profile, setProfile] = useState({});
 
-    useEffect(() => {
-      setDocumentLoaded(true);
-    }, []);
+  useEffect(() => {
+    setDocumentLoaded(true);
+  }, []);
 
-    useEffect(() => {
-      open && myProfile();
-    }, [open]);
+  useEffect(() => {
+    open && myProfile().then((res) => setProfile({ ...res }));
+  }, [open]);
 
   if (!open || !documentLoaded) return <></>;
   return ReactDom.createPortal(
     <>
       <div style={OVERLAY_STYLES} onClick={onClose} />
       <div style={MODAL_STYLES}>
-        <div>hello profile</div>
+        <div
+          style={{
+            padding: "10px",
+            display: "flex",
+            flexDirection: "column",
+            gap: "10px",
+          }}
+        >
+          <label htmlFor="first_name" style={{ fontSize: "0.8rem" }}>
+            First Name
+          </label>
+          <input
+            disabled
+            type="text"
+            id="first_name"
+            value={profile?.user?.first_name}
+          />
+          <label htmlFor="last_name" style={{ fontSize: "0.8rem" }}>
+            Last Name
+          </label>
+          <input
+            disabled
+            type="text"
+            id="last_name"
+            value={profile?.user?.last_name}
+          />
+          <button
+            style={{
+              backgroundColor: "#EAA79E",
+              color: "white",
+              padding: "10px",
+              borderRadius: "5px",
+              border: "none",
+              cursor: "pointer",
+            }}
+            onClick={() => {
+              localStorage.removeItem("token");
+              window.location.reload();
+            }}
+          >
+            Log Out
+          </button>
+        </div>
       </div>
     </>,
     document.getElementById("portal")
