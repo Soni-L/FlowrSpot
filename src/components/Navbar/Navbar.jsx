@@ -22,7 +22,7 @@ export default function Navbar() {
     <>
       <nav className="navbar-container">
         <div style={{ flexGrow: 1, display: "flex", gap: "4px" }}>
-          <img src="/favicon.svg" />
+          <img src="/FlowrSpot/favicon.svg" />
           <a
             href="#"
             style={{ fontWeight: 700, fontSize: "20px", color: "#EAA79E" }}

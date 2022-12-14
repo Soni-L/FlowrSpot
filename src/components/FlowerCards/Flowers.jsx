@@ -14,11 +14,11 @@ const FlowerCard = ({ flower }) => {
       <h4
         style={{
           position: "absolute",
-          top: '60%',
-          left: '50%',
-          transform: 'translate(-50%, 0)',
+          top: "60%",
+          left: "50%",
+          transform: "translate(-50%, 0)",
           textAlign: "center",
-          textShadow: '1px 1px black',
+          textShadow: "1px 1px black",
           color: "white",
         }}
       >
@@ -26,14 +26,21 @@ const FlowerCard = ({ flower }) => {
       </h4>
       <img
         src={flower.profile_picture}
-        style={{ height: "350px", width: "250px", objectFit: "cover", margin: "0", padding: "0" }}
+        style={{
+          height: "350px",
+          width: "250px",
+          objectFit: "cover",
+          margin: "0",
+          padding: "0",
+        }}
       />
     </div>
   );
 };
 
-export default function Flowers() {
-  const [flowers, setFlowers] = useState([]);
+export default function Flowers({ initialFlowers }) {
+  const [flowers, setFlowers] = useState(initialFlowers);
+  
   useEffect(() => {
     fetch("https://flowrspot-api.herokuapp.com/api/v1/flowers?page=0")
       .then((res) => res.json())
