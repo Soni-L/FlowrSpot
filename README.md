@@ -36,4 +36,4 @@ All commands are run from the root of the project, from a terminal:
 | `npm run astro --help` | Get help using the Astro CLI                       |
 
 ## Site preview
-![basics](https://soni-l.github.io/FlowrSpot)
+[FlowrSpot](https://soni-l.github.io/FlowrSpot)
