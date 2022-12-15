@@ -4,7 +4,13 @@ import SearchIsland from "../components/SearchIsland/SearchIsland";
 import Layout from "../layouts/Layout.astro";
 
 let initialFlowers = await fetch(
-  "https://flowrspot-api.herokuapp.com/api/v1/flowers?page=0"
+  "https://flowrspot-api.herokuapp.com/api/v1/flowers?page=0",
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "Cache-Control": "public, s-maxage=10, stale-while-revalidate=59",
+    },
+  }
 )
   .then((res) => res.json())
   .then((data) => {

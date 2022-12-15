@@ -41,13 +41,13 @@ const FlowerCard = ({ flower }) => {
 export default function Flowers({ initialFlowers }) {
   const [flowers, setFlowers] = useState(initialFlowers);
   
-  useEffect(() => {
-    fetch("https://flowrspot-api.herokuapp.com/api/v1/flowers?page=0")
-      .then((res) => res.json())
-      .then((data) => {
-        setFlowers(data?.flowers);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch("https://flowrspot-api.herokuapp.com/api/v1/flowers?page=0")
+  //     .then((res) => res.json())
+  //     .then((data) => {
+  //       setFlowers(data?.flowers);
+  //     });
+  // }, []);
 
   return (
     <div
