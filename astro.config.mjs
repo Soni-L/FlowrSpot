@@ -6,6 +6,4 @@ import react from "@astrojs/react";
 // https://astro.build/config
 export default defineConfig({
   integrations: [react()],
-  site: "https://Soni-L.github.io",
-  base: "/FlowrSpot",
 });
